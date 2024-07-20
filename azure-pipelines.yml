@@ -27,7 +27,7 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'mkdir d:Documents/GitHub/unyleya_projeto_cicd_Jonatas_Lopes' 
+    script: 'mkdir d:/Documents/GitHub/unyleya_projeto_cicd_Jonatas_Lopes' 
     #workingDirectory: # Optional
     #failOnStderr: false # Optional
 
