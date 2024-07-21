@@ -84,3 +84,4 @@ steps:
   inputs:
     artifactName: 'MobEAD'
    pathToPublish: 'd:\a\1\a' 
+   
