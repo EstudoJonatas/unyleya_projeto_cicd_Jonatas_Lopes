@@ -21,7 +21,7 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'mkdir d:\a\1\s\MobEAD.sln' 
+    script: 'mkdir d:\a\1\s\MobEAD' 
     #workingDirectory: # Optional
     #failOnStderr: false # Optional
 
@@ -45,7 +45,7 @@ steps:
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DeployIisAppPath="Default Web Site" /p:DesktopBuildPackageLocation="d:\a\1\s\MobEAD.sln"'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DeployIisAppPath="Default Web Site" /p:DesktopBuildPackageLocation="d:\a\1\s\MobEAD"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
