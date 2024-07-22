@@ -21,7 +21,7 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'mkdir d:\a\1\MobEAD' 
+    script: 'mkdir d:\a\1\unyleya_projeto_cicd_Jonatas_Lopes' 
     #workingDirectory: # Optional
     #failOnStderr: false # Optional
 
@@ -45,7 +45,7 @@ steps:
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DeployIisAppPath="Default Web Site" /p:DesktopBuildPackageLocation="d:\a\1\MobEAD"'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DeployIisAppPath="Default Web Site" /p:DesktopBuildPackageLocation="d:\a\1\unyleya_projeto_cicd_Jonatas_Lopes"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
@@ -70,7 +70,7 @@ steps:
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'JaCoCo' # Options: cobertura, jaCoCo
-    summaryFileLocation: '$(System.DefaultWorkingDirectory)/mobEAD/**/site/cobertura/coverage.xml'
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/unyleya_projeto_cicd_Jonatas_Lopes/**/site/cobertura/coverage.xml'
     pathToSources: '$(System.DefaultWorkingDirectory)/mobEAD/'
     #reportDirectory: # Optional
     #additionalCodeCoverageFiles: # Optional
@@ -84,4 +84,4 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     artifactName: 'MobEAD'
-    pathToPublish: 'd:\a\1\MobEAD'
+    pathToPublish: 'd:\a\1\unyleya_projeto_cicd_Jonatas_Lopes'
