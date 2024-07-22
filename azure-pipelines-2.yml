@@ -15,7 +15,6 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-
 # Command line
 # Run a command line script using Bash on Linux and macOS and cmd.exe on Windows
 
@@ -25,7 +24,6 @@ steps:
     #workingDirectory: # Optional
     #failOnStderr: false # Optional
 
-
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'SONAR Analia'
@@ -33,9 +31,10 @@ steps:
     scannerMode: 'CLI'
     configMode: 'manual'
     cliProjectKey: 'analia'
-    cliProjectName: Analia
+    cliProjectName: 'Analia'
     cliSources: '$(System.DefaultWorkingDirectory)'
   continueOnError: true
+
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
@@ -49,14 +48,12 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    testAssemblyVer2: '$(Build.SourcesDirectory)/test**.js'
-    
- 
+    testAssemblyVer2: '$(Build.SourcesDirectory)/test/**/*.dll'
+
 - task: SonarCloudAnalyze@1
   displayName: 'Run Code Analysis'
   continueOnError: true
@@ -69,16 +66,17 @@ steps:
 # Publish Cobertura or JaCoCo code coverage results from a build
 - task: PublishCodeCoverageResults@1
   inputs:
-    codeCoverageTool: 'JaCoCo' #Options: cobertura, jaCoCo
-    summaryFileLocation: $(System.DefaultWorkingDirectory)/mobEAD/**/site/cobertura/coverage.xml
-    pathToSources: $(System.DefaultWorkingDirectory)/mobEAD/
+    codeCoverageTool: 'JaCoCo' # Options: cobertura, jaCoCo
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/mobEAD/**/site/cobertura/coverage.xml'
+    pathToSources: '$(System.DefaultWorkingDirectory)/mobEAD/'
     #reportDirectory: # Optional
     #additionalCodeCoverageFiles: # Optional
     #failIfCoverageEmpty: false # Optional
+
 - task: CopyFiles@2
   inputs:
     contents: '**/*.*'
-    targetFolder: $(build.artifactStagingDirectory)
+    targetFolder: '$(build.artifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1
   inputs:
