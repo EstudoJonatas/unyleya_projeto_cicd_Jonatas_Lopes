@@ -31,3 +31,9 @@ steps:
   inputs:
     script: 'dir $(Build.SourcesDirectory)\bin\**\*.dll /s'
 
+- task: VSTest@2
+  inputs:
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+    testAssemblyVer2: '**\bin\**\*Tests.dll'
+    diagnosticsEnabled: true
